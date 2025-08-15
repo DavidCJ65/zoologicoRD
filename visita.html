@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Planifica tu visita - Parque Zoológico Nacional</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <style>
+    /* Estilos específicos para la página de visita */
+    .hero-visita{
+      background: linear-gradient(rgba(10,30,10,0.45), rgba(10,30,10,0.45)), url('hero-visita.jpg') center/cover no-repeat;
+      color: #fff;
+      padding: 72px 20px;
+      text-align: center;
+      border-bottom: 4px solid #e6c200;
+    }
+    .hero-visita h1{ font-size: 2rem; margin-bottom: 8px; }
+    .container{ max-width:1100px; margin: 24px auto; padding: 0 16px; }
+    .grid-2{ display:grid; grid-template-columns: 1fr 320px; gap:20px; align-items:start; }
+    .tarifas table{ width:100%; border-collapse: collapse; }
+    .tarifas th, .tarifas td{ padding:10px; border-bottom:1px solid #eaeaea; text-align:left; }
+    .cta-compra{ display:inline-block; background:#ffd700; color:#333; padding:12px 20px; border-radius:6px; font-weight:bold; text-decoration:none; }
+    .info-box{ background:#f7f7f2; padding:16px; border-radius:8px; border:1px solid #e6e6d9; }
+    /* Modal sencillo */
+    .modal-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,0.5); display:none; align-items:center; justify-content:center; z-index:1200; }
+    .modal-backdrop.active{ display:flex; }
+    .modal{ background:#fff; width:calc(100% - 40px); max-width:520px; padding:20px; border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,0.3); }
+    .modal h3{ margin-bottom:10px; color:#224d12; }
+    .modal form{ display:flex; flex-direction:column; gap:8px; }
+    .modal input[type="number"], .modal input[type="date"], .modal input[type="email"]{ padding:8px; border-radius:4px; border:1px solid #ccc; }
+    .modal .actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:8px; }
+    .btn-secondary{ background:#eee; padding:8px 12px; border-radius:6px; cursor:pointer; }
+    .btn-primary{ background:#4e7723; color:#fff; padding:8px 12px; border-radius:6px; cursor:pointer; border:none; }
+    /* FAQ (acordeón) */
+    .faq-item{ margin-bottom:10px; }
+    .faq-question{ background:#f4f4f4; padding:12px; border-radius:6px; cursor:pointer; }
+    .faq-answer{ padding:12px; display:none; background:#fff; border:1px solid #eee; border-radius:6px; margin-top:6px; }
+    @media (max-width:880px){
+      .grid-2{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Parque Zoológico Nacional</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html#inicio">Inicio</a></li>
+        <li><a href="index.html#animales">Animales</a></li>
+        <li><a href="index.html#eventos">Eventos</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<section class="hero-visita" role="banner" aria-label="Planifica tu visita">
+  <div class="container">
+    <h1>Planifica tu visita</h1>
+    <p style="max-width:800px;margin:auto;">
+      Todo lo que necesitas saber para venir al Parque Zoológico Nacional: horarios, tarifas, cómo llegar, normas y opciones para grupos y escuelas.
+    </p>
+    <img src="foto-en-el-zoologico.jpeg" alt="Foto en el Zoológico con mis compañeros" class="foto-visita">
+  </div>
+</section>
+
+
+  <main class="container" role="main">
+    <div class="grid-2">
+      <div>
+        <section class="tarifas" aria-labelledby="tarifas-title">
+          <h2 id="tarifas-title">Horarios y tarifas</h2>
+          <p>Horario: <strong>Martes a Domingo</strong> — 9:00 AM a 5:00 PM. Lunes cerrado (limpieza y mantenimiento).</p>
+          <table>
+            <thead>
+              <tr><th>Tipo</th><th>Precio (RD$)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Adulto</td><td>250</td></tr>
+              <tr><td>Niños (3-12)</td><td>120</td></tr>
+              <tr><td>Estudiantes (con ID)</td><td>150</td></tr>
+              <tr><td>Mayor 65+</td><td>100</td></tr>
+              <tr><td>Entrada familiar (2 adultos + 2 niños)</td><td>600</td></tr>
+            </tbody>
+          </table>
+
+          <p style="margin-top:12px;">
+            <button id="openTickets" class="cta-compra" type="button">Comprar entradas</button>
+            <a href="#grupos" style="margin-left:12px;" class="boton">Reservar grupo</a>
+          </p>
+        </section>
+
+        <section id="como-llegar" aria-labelledby="como-title" style="margin-top:18px;">
+          <h2 id="como-title">Cómo llegar</h2>
+          <p>Puedes llegar en vehículo privado o transporte público. Tenemos estacionamiento gratuito para visitantes.</p>
+          <div style="height:220px; border:1px solid #e6e6e6; border-radius:8px; overflow:hidden;">
+            <!-- Mantén tu iframe o mapa real aquí -->
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.552080731225!2d-69.92985918493364!3d18.50826649456912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf890a7429e5d1%3A0x1b3775285fcd846a!2sParque%20Zool%C3%B3gico%20Nacional%20Arq.%20Manuel%20Valverde%20Podest%C3%A1!5e0!3m2!1ses!2sdo!4v1692100000000!5m2!1ses!2sdo" 
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </section>
+
+        <section id="normas" style="margin-top:18px;">
+          <h2>Recomendaciones y normas</h2>
+          <ul>
+            <li>No alimentes a los animales.</li>
+            <li>Respeta las barreras y señalizaciones.</li>
+            <li>Los menores deben venir acompañados.</li>
+            <li>Prohibido fumar dentro de las áreas de exhibición.</li>
+            <li>Trae protector solar y agua — algunos recorridos son al aire libre.</li>
+          </ul>
+        </section>
+
+        <section id="faq" style="margin-top:18px;">
+          <h2>Preguntas frecuentes</h2>
+          <div class="faq-item">
+            <div class="faq-question">¿Puedo llevar comida? <span style="float:right;">+</span></div>
+            <div class="faq-answer">Se permite comida en las áreas designadas. No alimentes a los animales.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Hay visitas guiadas? <span style="float:right;">+</span></div>
+            <div class="faq-answer">Sí, las visitas guiadas están disponibles con reserva previa para grupos y escuelas.</div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="info-box" aria-label="Información útil">
+        <h3>Visitas de grupo</h3>
+        <p id="grupos">Descuentos para grupos escolares y tour guiado con reserva. Contacto: <strong>grupos@zoologiconacional.do</strong> o llama al <strong>(809) 000-0000</strong>.</p>
+
+        <h3 style="margin-top:12px;">Servicios</h3>
+        <ul>
+          <li>Estacionamiento</li>
+          <li>Baños y áreas de picnic</li>
+          <li>Tienda de recuerdos</li>
+        </ul>
+
+        <h3 style="margin-top:12px;">Horarios especiales</h3>
+        <p>Vacaciones y feriados con horarios extendidos (revisar calendario de eventos).</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer style="margin-top:20px; padding:18px 0; background:#4e7723; color:#fff; text-align:center;">
+    <div class="container">
+      <p>&copy; 2025 Parque Zoológico Nacional. Todos los derechos reservados.</p>
+      <p><a href="index.html" style="color:#ffd700;">Volver al sitio principal</a></p>
+    </div>
+  </footer>
+
+  <!-- Modal de compra (simulación) -->
+  <div id="modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <h3>Comprar entradas (simulación)</h3>
+      <form id="ticketForm">
+        <label for="date">Fecha:</label>
+        <input id="date" type="date" required />
+        <label for="qty">Cantidad de entradas:</label>
+        <input id="qty" type="number" min="1" value="2" required />
+        <label for="email">Correo electrónico:</label>
+        <input id="email" type="email" placeholder="tu@correo.com" required />
+        <div class="actions">
+          <button type="button" id="closeModal" class="btn-secondary">Cancelar</button>
+          <button type="submit" class="btn-primary">Simular compra</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Modal compras
+    const openBtn = document.getElementById('openTickets');
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+    const ticketForm = document.getElementById('ticketForm');
+
+    function showModal(show){
+      modal.classList.toggle('active', show);
+      modal.setAttribute('aria-hidden', show ? 'false' : 'true');
+    }
+
+    openBtn && openBtn.addEventListener('click', () => showModal(true));
+    closeModal && closeModal.addEventListener('click', () => showModal(false));
+    modal.addEventListener('click', (e) => { if(e.target === modal) showModal(false); });
+
+    ticketForm && ticketForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const date = document.getElementById('date').value;
+      const qty = document.getElementById('qty').value;
+      const email = document.getElementById('email').value;
+      alert(`Simulación de compra:\nFecha: ${date}\nEntradas: ${qty}\nConfirmación enviada a: ${email}`);
+      showModal(false);
+      ticketForm.reset();
+    });
+
+    // Acordeón FAQ simple
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const ans = q.nextElementSibling;
+        const open = ans.style.display === 'block';
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+        ans.style.display = open ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>

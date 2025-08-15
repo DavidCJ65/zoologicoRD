@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Participa en Nuestros Programas - Parque Zoológico Nacional</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <style>
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+    }
+    h1, h2 {
+      color: #4e7723;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    form {
+      background: #f7f9f2;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #cdd5c1;
+      max-width: 600px;
+      margin: 1rem auto;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #2e4a0f;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border: 1px solid #a4b077;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: inherit;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    button {
+      margin-top: 1.5rem;
+      background-color: #4e7723;
+      color: white;
+      font-weight: bold;
+      padding: 0.8rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #3b5818;
+    }
+    .info-box {
+      background: #e2f0d9;
+      border: 1px solid #a9c481;
+      padding: 1rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      border-radius: 8px;
+      color: #345618;
+      font-style: italic;
+    }
+    a.boton {
+      display: inline-block;
+      background: #ffd700;
+      color: #333;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    a.boton:hover {
+      background: #e6c200;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Parque Zoológico Nacional</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html#inicio">Inicio</a></li>
+        <li><a href="index.html#animales">Animales</a></li>
+        <li><a href="index.html#eventos">Eventos</a></li>
+        <li><a href="index.html#video">Video</a></li>
+        <li><a href="index.html#ubicacion">Ubicación</a></li>
+        <li><a href="index.html#conservacion">Conservación</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+        <li><a href="programas.html" aria-current="page">Programas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main role="main" aria-labelledby="main-title">
+    <h1 id="main-title">Participa en Nuestros Programas</h1>
+
+    <p>El Parque Zoológico Nacional ofrece varios programas para que puedas involucrarte en la conservación, educación y cuidado de la fauna. Puedes ser voluntario, participar en actividades educativas, o apoyar campañas de conservación.</p>
+
+    <section aria-labelledby="programas-disponibles">
+      <h2 id="programas-disponibles">Programas disponibles</h2>
+      <ul>
+        <li><strong>Voluntariado Ambiental:</strong> Ayuda en el cuidado de animales, mantenimiento de áreas verdes y apoyo en eventos especiales.</li>
+        <li><strong>Educación Ambiental:</strong> Participa como guía educativo para grupos escolares y turistas.</li>
+        <li><strong>Campañas de Conservación:</strong> Colabora en campañas de sensibilización y protección de especies en peligro.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="formulario-inscripcion" style="margin-top:2rem;">
+      <h2 id="formulario-inscripcion">Formulario de inscripción</h2>
+      <form id="programForm" onsubmit="enviarFormulario(event)">
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required />
+
+        <label for="programa">Programa de interés:</label>
+        <select id="programa" name="programa" required>
+          <option value="" disabled selected>Selecciona un programa</option>
+          <option value="voluntariado">Voluntariado Ambiental</option>
+          <option value="educacion">Educación Ambiental</option>
+          <option value="conservacion">Campañas de Conservación</option>
+        </select>
+
+        <label for="mensaje">¿Por qué quieres participar?</label>
+        <textarea id="mensaje" name="mensaje" required></textarea>
+
+        <button type="submit">Enviar inscripción</button>
+      </form>
+    </section>
+
+    <section class="info-box" aria-live="polite" role="region" aria-atomic="true" id="responseMessage" style="display:none;">
+      <!-- Mensajes dinámicos de respuesta aquí -->
+    </section>
+
+    <a href="index.html#conservacion" class="boton" style="display: block; width: max-content; margin: 2rem auto 0 auto;">← Volver a Conservación</a>
+  </main>
+
+  <footer style="text-align:center; padding: 1rem 0; background:#4e7723; color:#fff; margin-top:3rem;">
+    <p>&copy; 2025 Parque Zoológico Nacional. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function enviarFormulario(event) {
+      event.preventDefault();
+      const form = event.target;
+      const nombre = form.nombre.value.trim();
+      const correo = form.correo.value.trim();
+      const programa = form.programa.value;
+      const mensaje = form.mensaje.value.trim();
+
+      if (!nombre || !correo || !programa || !mensaje) {
+        alert("Por favor completa todos los campos.");
+        return;
+      }
+
+      // Simulación de envío
+      const responseBox = document.getElementById('responseMessage');
+      responseBox.style.display = 'block';
+      responseBox.textContent = `¡Gracias, ${nombre}! Tu inscripción para el programa "${programa}" ha sido recibida. Nos pondremos en contacto pronto vía ${correo}.`;
+
+      form.reset();
+      form.querySelector('select').selectedIndex = 0;
+      form.querySelector('textarea').value = '';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parque Zoológico Nacional</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <h1>Parque Zoológico Nacional</h1>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#animales">Animales</a></li>
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#conservacion">Conservación</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- SECCIÓN INICIO -->
+<section id="inicio">
+  <h2>Bienvenidos al Zoológico</h2>
+  <p>Descubre la diversidad de especies, participa en actividades educativas y apoya la conservación de la fauna. Nuestro zoológico es un espacio para aprender, disfrutar y cuidar la naturaleza.</p>
+  <!-- Enlace abre nueva pestaña -->
+  <a href="visita.html" class="boton">Planifica tu visita</a>
+</section>
+
+  <!-- SECCIÓN ANIMALES -->
+<section id="animales">
+  <h2>Conoce algunos de nuestros animales</h2>
+  <div class="galeria">
+<figure>
+  <a href="leon.html"><img src="leon.jpeg" alt="León Africano"></a>
+  <figcaption>León Africano</figcaption>
+</figure>
+
+<figure>
+  <a href="cocodrilo.html"><img src="cocodrilo.jpg" alt="Cocodrilo"></a>
+  <figcaption>Cocodrilo</figcaption>
+</figure>
+
+<figure>
+  <a href="mono-araña.html"><img src="mono-araña.jpg" alt="Mono Araña Colombiano"></a>
+  <figcaption>Mono Araña</figcaption>
+</figure>
+
+<figure>
+  <a href="cebra.html"><img src="cebra.jfif" alt="Cebra"></a>
+  <figcaption>Cebra</figcaption>
+</figure>
+
+  </div>
+</section>
+
+  <!-- SECCIÓN EVENTOS -->
+  <section id="eventos">
+    <h2>Próximos eventos</h2>
+    <ul>
+      <li><strong>15 de agosto:</strong> Taller de fotografía de fauna.</li>
+      <li><strong>20 de agosto:</strong> Charla sobre conservación de especies en peligro.</li>
+      <li><strong>1 de septiembre:</strong> Día familiar con actividades infantiles.</li>
+    </ul>
+  </section>
+
+  <!-- SECCIÓN VIDEO -->
+<section id="video">
+  <h2>Video de presentación</h2>
+  <div class="video-container" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; max-width:100%;">
+    <iframe 
+      src="https://www.youtube.com/embed/GcPKoLo2ASw" 
+      title="Video de presentación del Parque Zoológico Nacional" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen 
+      style="position:absolute; top:0; left:0; width:100%; height:100%;">
+    </iframe>
+  </div>
+</section>
+
+
+  <!-- SECCIÓN UBICACIÓN -->
+<section id="ubicacion">
+  <h2>¿Dónde estamos?</h2>
+  <p>Nos encontramos en Santo Domingo, República Dominicana.</p>
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.552080731225!2d-69.92985918493364!3d18.50826649456912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf890a7429e5d1%3A0x1b3775285fcd846a!2sParque%20Zool%C3%B3gico%20Nacional%20Arq.%20Manuel%20Valverde%20Podest%C3%A1!5e0!3m2!1ses!2sdo!4v1692100000000!5m2!1ses!2sdo" 
+    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</section>
+
+
+  <!-- SECCIÓN CONSERVACIÓN -->
+  <section id="conservacion">
+    <h2>Conservación y educación</h2>
+    <p>En el Parque Zoológico Nacional, trabajamos para proteger especies en peligro de extinción y educar a la comunidad sobre la importancia de preservar la biodiversidad. Únete a nuestros programas y haz la diferencia.</p>
+    <a href="programas.html" class="boton">Participa en nuestros programas</a>
+
+  </section>
+
+  <!-- SECCIÓN CONTACTO -->
+  <section id="contacto">
+    <h2>Contáctanos</h2>
+    <form onsubmit="enviarFormulario(event)">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="correo">Correo electrónico:</label>
+      <input type="email" id="correo" name="correo" required>
+
+      <label for="mensaje">Mensaje:</label>
+      <textarea id="mensaje" name="mensaje" required></textarea>
+
+      <input type="submit" value="Enviar">
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Parque Zoológico Nacional. Todos los derechos reservados.</p>
+    <p>Síguenos en:
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">Twitter</a>
+    </p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    function enviarFormulario(event) {
+      event.preventDefault(); // Evita recargar la página
+      alert("¡Gracias por contactarnos! Responderemos pronto.");
+      document.querySelector("form").reset(); // Limpia el formulario
+    }
+  </script>
+</body>
+</html>
